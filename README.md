@@ -10,7 +10,7 @@ Recruiters and employers can discover students based on demonstrated work, revie
 ## Team Members
 - Team Member 1 - Malcolm Richards
 - Team Member 2 - Jordan Monts
-- Team Member 3 - Isiah Alfred
+- Team Member 3 - Isaiah Alfred
 - Team Member 4 - Nafee Ahmed
 
 ## User Roles
