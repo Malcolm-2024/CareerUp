@@ -1,4 +1,8 @@
-# CareerUp
+<h1 align="center">CareerUp</h1>
+
+<p align="center">
+  A media-first professional networking platform connecting college students with employers.
+</p>
 
 ## Project Description
 CareerUp is a media-first professional social networking platform designed to connect college students with employers across multiple academic disciplines.
