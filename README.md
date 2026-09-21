@@ -44,7 +44,7 @@ CareerUp/
 ```
 
 ## Basic Setup Instructions
-
+-  Prerequisites: Git, Java, Node.js, and MySQL
 - Clone the CareerUp repository to your computer.
 - Pull the latest version of the repository before making changes.
 - Open the backend project using IntelliJ IDEA.
