@@ -30,10 +30,10 @@ CareerUp includes five primary user roles:
 
 ## Selected Technology
 - Programming Language: Java, HTML/CSS, Javascript
-- Framework: TBD
+- Framework: Spring Boot (Backend), React (Frontend) 
 - Database: mySql
 - Development Environment / IDE: Intellij and Visual Studio
-- Testing Framework / Mechanism: TBD
+- Testing Framework / Mechanism: JUnit (Backend), Jest (Frontend)
 
 ## Repository Structure
 ```text
