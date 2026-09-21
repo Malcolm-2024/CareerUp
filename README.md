@@ -50,3 +50,10 @@ CareerUp/
 - Open the backend project using IntelliJ IDEA.
 - Open the frontend project using Visual Studio Code.
 - Run the Spring Boot backend and React frontend from their development environments.
+
+## Selected Technology
+- Programming Language: Java, HTML/CSS, Javascript
+- Framework: Spring Boot (Backend), React (Frontend)
+- Database: mySql
+- Development Environment / IDE: Intellij and Visual Studio
+- Testing Framework / Mechanism: JUnit (Backend), Jest (Frontend)
