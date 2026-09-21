@@ -41,3 +41,12 @@ CareerUp/
 ├── src/
 ├── docs/
 └── README.md
+```
+
+## Basic Setup Instructions
+
+- Clone the CareerUp repository to your computer.
+- Pull the latest version of the repository before making changes.
+- Open the backend project using IntelliJ IDEA.
+- Open the frontend project using Visual Studio Code.
+- Run the Spring Boot backend and React frontend from their development environments.
