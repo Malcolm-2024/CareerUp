@@ -17,7 +17,7 @@ Recruiters and employers can discover students based on demonstrated work, revie
 - Team Member 1 - Nafee Ahmed
 - Team Member 2 - Isaiah Alfred
 - Team Member 3 - Jordan Monts
-- Team Member 4 - Malcolm Richard
+- Team Member 4 - Malcolm Richards
 
 ## User Roles
 CareerUp includes five primary user roles:
