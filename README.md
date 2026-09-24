@@ -34,6 +34,7 @@ CareerUp includes five primary user roles:
 - Database: mySql
 - Development Environment / IDE: Intellij and Visual Studio
 - Testing Framework / Mechanism: JUnit (Backend), Jest (Frontend)
+- Version Control: Git
 
 ## Repository Structure
 ```text
