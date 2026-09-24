@@ -536,3 +536,11 @@ body {
         grid-template-columns: 1fr;
     }
 }
+
+.resumes {
+    color: #A855F7;
+}
+
+.reels {
+    color: #F43F5E;
+}
