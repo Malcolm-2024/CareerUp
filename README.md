@@ -35,6 +35,7 @@ CareerUp includes five primary user roles:
 - Development Environment / IDE: Intellij and Visual Studio
 - Testing Framework / Mechanism: JUnit (Backend), Jest (Frontend)
 - Version Control: Git
+- app mokup : figma
 
 ## Repository Structure
 ```text
