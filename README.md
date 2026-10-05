@@ -57,3 +57,5 @@ CareerUp/
 - Database: mySql
 - Development Environment / IDE: Intellij and Visual Studio
 - Testing Framework / Mechanism: JUnit (Backend), Jest (Frontend)
+
+
