@@ -102,30 +102,17 @@ body {
 
 /* Temporary logo */
 
-.logo-placeholder {
+.logo {
 
-    width: 40px;
+    width: 54px;
 
-    height: 40px;
+    height: 54px;
 
-    display: flex;
+    object-fit: contain;
 
-    align-items: center;
+    border-radius: 12px;
 
-    justify-content: center;
-
-    border-radius: 10px;
-
-    font-weight: bold;
-
-    background:
-            linear-gradient(
-                    135deg,
-                    var(--indigo),
-                    var(--purple),
-                    var(--coral),
-                    var(--orange)
-            );
+    display: block;
 }
 
 
