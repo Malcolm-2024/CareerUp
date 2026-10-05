@@ -1,40 +1,53 @@
 # Student Use Case 1: Browse Job Opportunities
 
-## Purpose
+## Actor
 
-This screen allows students to browse available career and job opportunities through CareerUp.
+Student
+
+## Goal
+
+Allow students to search for and view available career and job opportunities on CareerUp.
+
+## Preconditions
+
+* Student has access to their CareerUp account.
+* Career opportunities are available in the system.
+
+## Main Flow
+
+1. Student selects "Browse Opportunities."
+2. CareerUp displays available job and career opportunities.
+3. Student enters a keyword or selects search filters.
+4. CareerUp searches for opportunities that match the student's criteria.
+5. CareerUp displays the matching opportunities.
+6. Student selects an opportunity to view more information.
+7. CareerUp displays the opportunity details.
+8. Student reviews the opportunity and can choose to save or pursue it.
 
 ## Student Actions
 
-- Search for opportunities
-- Filter opportunities
-- View available job listings
-- Select an opportunity to view additional details
+* Browse available opportunities
+* Search for opportunities
+* Filter opportunities
+* View opportunity details
+* Save an opportunity
+* Review company and position information
 
 ## Screen Components
 
-- Search bar
-- Job category filter
-- Location filter
-- Job type filter
-- Opportunity cards
-- View Details button
+* Search bar
+* Job category filter
+* Location filter
+* Job type filter
+* Opportunity cards
+* Job title
+* Company name
+* Location
+* Job type
+* Short description
+* View Details button
+* Save button
 
-## Example Opportunity Information
+## Alternative Flow
 
-Each opportunity card should display:
-
-- Job title
-- Company name
-- Location
-- Job type
-- Short description
-- View Details button
-
-## Use Case Flow
-
-1. Student opens Browse Opportunities.
-2. Student searches or applies filters.
-3. CareerUp displays matching opportunities.
-4. Student selects an opportunity.
-5. Student views the opportunity details.
+If no opportunities match the student's search or fil
