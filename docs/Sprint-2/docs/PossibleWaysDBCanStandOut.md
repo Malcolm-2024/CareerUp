@@ -1,9 +1,5 @@
 # CareerUp Advanced Database Design Strategies for Competition
 
-To stand out in a database design competition—especially with an outside evaluator looking for both textbook correctness and real-world engineering polish—you want to go beyond basic CRUD schemas. An outside expert will look for how well your database handles **state transitions, historical integrity, performance optimization at scale, and complex many-to-many relationships**.
-
-Here are five advanced database design decisions tailored specifically to CareerUp’s requirements that will make your project shine:
-
 ## 1. Immutable Portfolio "Snapshotting" for Applications
 * **The Challenge:** Students submit portfolio posts as application credentials[cite: 1]. If a student deletes or edits a flashy project *after* applying, the recruiter's view of the application breaks or shows altered data.
 * **The Design Decision:** Instead of a direct foreign key from `Applications` straight to the live `Posts` table, implement a **Snapshot Junction Table** (e.g., `Application_Post_Snapshots`). When an application is submitted, the application process copies a point-in-time snapshot of the post's metadata (title, media URL, description, active skill tags) into this immutable record. 
