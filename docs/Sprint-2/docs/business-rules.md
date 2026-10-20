@@ -1,6 +1,6 @@
 # CareerUp business rules and constraints
 
-41 traced rules · preserved 48-table logical design · October 10, 2026.
+41 traced rules · preserved 48-table logical design · October 10, 2026. 
 
 **Functional requirement** identifies behavior in the FRD. **Audited design assumption** identifies a schema/workflow choice beyond the literal requirement. **Proposed policy / unresolved** is not an approved requirement. Some requirement-backed rules contain explicit audited limits; these are identified in the explanation and decisions. “Database” means declared logical constraints, not a deployed or SQL-tested database.
 
