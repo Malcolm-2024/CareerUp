@@ -1,0 +1,272 @@
+# CareerUp — Simplified Data Dictionary
+
+This dictionary describes the current 12-table core ERD.
+
+Data types, lengths, defaults, and status values below are proposed
+implementation choices for team confirmation. No database is implemented
+by this document.
+
+## Legend
+
+- PK: Primary key — uniquely identifies a record.
+- FK: Foreign key — references a record in another table.
+- UQ: Unique constraint — prevents duplicates.
+- Required: The field cannot be NULL.
+- Optional: The field may be NULL.
+- Composite key: Two fields form one key together.
+
+All ID fields and their referencing foreign keys use INT UNSIGNED.
+
+## 1. USERS
+
+Stores accounts and basic profile information for all roles.
+
+| Field | Proposed type | Required? | Key | Description |
+|---|---|---|---|---|
+| user_id | INT UNSIGNED | Yes | PK | Unique account ID. |
+| company_id | INT UNSIGNED | No | FK | References COMPANIES.company_id; optional employer affiliation. |
+| name | VARCHAR(100) | Yes | — | User's displayed name. |
+| email | VARCHAR(254) | Yes | UQ | Unique sign-in email address. |
+| password_hash | VARCHAR(255) | Yes | — | Password hash; never a plain-text password. |
+| role | VARCHAR(30) | Yes | — | Student, Recruiter, Company Representative, Career Advisor, or Administrator. |
+| school | VARCHAR(150) | No | — | School affiliation. |
+| major | VARCHAR(100) | No | — | Student's academic major. |
+| graduation_year | SMALLINT UNSIGNED | No | — | Expected or completed graduation year. |
+| bio | TEXT | No | — | Professional biography. |
+
+A user has one role and at most one company affiliation in this design.
+Role-specific profile requirements must be checked by the application.
+
+## 2. COMPANIES
+
+Stores employer information.
+
+| Field | Proposed type | Required? | Key | Description |
+|---|---|---|---|---|
+| company_id | INT UNSIGNED | Yes | PK | Unique employer ID. |
+| name | VARCHAR(150) | Yes | — | Company name; not assumed globally unique. |
+| industry | VARCHAR(100) | No | — | Employer's industry. |
+| description | TEXT | No | — | Company introduction or culture information. |
+| website | VARCHAR(500) | No | — | Company website address. |
+| status | VARCHAR(20) | Yes | — | Proposed: PENDING, APPROVED, or INACTIVE. |
+
+A company may have many affiliated users, opportunities, and
+collaboration requests.
+
+## 3. POSTS
+
+Stores content displayed in portfolios and the discovery feed.
+
+| Field | Proposed type | Required? | Key | Description |
+|---|---|---|---|---|
+| post_id | INT UNSIGNED | Yes | PK | Unique post ID. |
+| author_id | INT UNSIGNED | Yes | FK | References USERS.user_id; identifies the creator. |
+| title | VARCHAR(150) | Yes | — | Project or accomplishment title. |
+| description | TEXT | No | — | Explanation of the work. |
+| created_at | DATETIME | Yes | — | Creation time; supports feed sorting. |
+| category | VARCHAR(100) | No | — | Academic or project category. |
+| visibility | VARCHAR(20) | Yes | — | Proposed: PUBLIC or PRIVATE. |
+| status | VARCHAR(20) | Yes | — | Proposed: DRAFT, PUBLISHED, or ARCHIVED. |
+
+Each post has exactly one author. An author may create many posts.
+The portfolio and feed reuse the same post rather than duplicate it.
+
+## 4. POST_MEDIA
+
+Stores multiple image or video references for a post.
+
+| Field | Proposed type | Required? | Key | Description |
+|---|---|---|---|---|
+| media_id | INT UNSIGNED | Yes | PK | Unique media ID. |
+| post_id | INT UNSIGNED | Yes | FK | References POSTS.post_id. |
+| media_url | VARCHAR(1000) | Yes | — | Location of the uploaded media. |
+| media_type | VARCHAR(10) | Yes | — | Proposed: IMAGE or VIDEO. |
+| display_order | SMALLINT UNSIGNED | Yes | UQ pair | Positive position within the post. |
+
+The combination (post_id, display_order) must be unique.
+
+Each media record belongs to one post. A draft may have no media;
+the application must require at least one valid media item before
+publishing a media post.
+
+The database stores the media reference, not the uploaded file bytes.
+
+## 5. SKILLS
+
+Stores standardized skill names.
+
+| Field | Proposed type | Required? | Key | Description |
+|---|---|---|---|---|
+| skill_id | INT UNSIGNED | Yes | PK | Unique skill ID. |
+| name | VARCHAR(100) | Yes | UQ | Unique skill name, such as Java or Graphic Design. |
+| active | BOOLEAN | Yes | — | Whether the skill is available for selection. |
+
+Proposed default for active: TRUE.
+
+A skill can be associated with many profiles and posts.
+
+## 6. USER_SKILLS
+
+Connects users to their profile skills.
+
+| Field | Proposed type | Required? | Key | Description |
+|---|---|---|---|---|
+| user_id | INT UNSIGNED | Yes | PK + FK | References USERS.user_id. |
+| skill_id | INT UNSIGNED | Yes | PK + FK | References SKILLS.skill_id. |
+
+Composite primary key: (user_id, skill_id).
+
+A user can have multiple skills, and a skill can belong to multiple
+users. The composite key prevents the same pairing appearing twice.
+
+## 7. POST_SKILLS
+
+Connects portfolio posts to skill tags.
+
+| Field | Proposed type | Required? | Key | Description |
+|---|---|---|---|---|
+| post_id | INT UNSIGNED | Yes | PK + FK | References POSTS.post_id. |
+| skill_id | INT UNSIGNED | Yes | PK + FK | References SKILLS.skill_id. |
+
+Composite primary key: (post_id, skill_id).
+
+A post can have multiple skill tags. The composite key prevents
+the same skill being attached to the same post twice.
+
+## 8. COLLABORATIONS
+
+Stores a student's request for company verification of their own post.
+
+| Field | Proposed type | Required? | Key | Description |
+|---|---|---|---|---|
+| collaboration_id | INT UNSIGNED | Yes | PK | Unique verification request ID. |
+| post_id | INT UNSIGNED | Yes | FK + UQ | References POSTS.post_id. |
+| student_id | INT UNSIGNED | Yes | FK | References USERS.user_id; must match the post's author_id. |
+| company_id | INT UNSIGNED | Yes | FK | References COMPANIES.company_id; the tagged employer. |
+| reviewer_id | INT UNSIGNED | Conditional | FK | References USERS.user_id; the authorized company representative. |
+| status | VARCHAR(20) | Yes | — | Proposed: PENDING, APPROVED, or REJECTED. |
+| reviewed_at | DATETIME | Conditional | — | Time the representative approved or rejected the request. |
+| showcase | BOOLEAN | Yes | — | Whether approved work is selected for the company showcase. |
+
+### Verification rules
+
+- The requesting student must own the referenced post:
+  student_id must equal POSTS.author_id.
+- A company is required for this verification workflow.
+- Only an authorized representative of that company may approve
+  or reject the request.
+- reviewer_id and reviewed_at are NULL while pending and required
+  after a decision.
+- A company tag alone does not mean the work is verified.
+- Only APPROVED requests may display a verified indicator.
+- showcase may be TRUE only for approved work.
+- Proposed default for showcase: FALSE.
+
+Unique post_id allows zero or one current request per post.
+
+**This one-current-request restriction is a design assumption requiring
+team approval, not an explicit original functional requirement.**
+
+Foreign keys alone do not enforce student ownership or reviewer
+authorization; those rules need additional validation.
+
+## 9. OPPORTUNITIES
+
+Stores jobs and internships offered by employers.
+
+| Field | Proposed type | Required? | Key | Description |
+|---|---|---|---|---|
+| job_id | INT UNSIGNED | Yes | PK | Unique opportunity ID. |
+| company_id | INT UNSIGNED | Yes | FK | References COMPANIES.company_id. |
+| recruiter_id | INT UNSIGNED | Yes | FK | References USERS.user_id; the creating recruiter. |
+| title | VARCHAR(150) | Yes | — | Position title. |
+| description | TEXT | Yes | — | Responsibilities and requirements. |
+| location | VARCHAR(150) | No | — | Work location or remote arrangement. |
+| type | VARCHAR(30) | Yes | — | Proposed: JOB or INTERNSHIP. |
+| deadline | DATE | No | — | Application deadline, if specified. |
+| status | VARCHAR(20) | Yes | — | Proposed: DRAFT, OPEN, or CLOSED. |
+
+Each opportunity belongs to one company and records one creating
+recruiter. The application must confirm the recruiter is authorized
+to act for that company.
+
+## 10. INVITATIONS
+
+Stores a recruiter's invitation asking a student to apply.
+
+| Field | Proposed type | Required? | Key | Description |
+|---|---|---|---|---|
+| invitation_id | INT UNSIGNED | Yes | PK | Unique invitation ID. |
+| recruiter_id | INT UNSIGNED | Yes | FK | References USERS.user_id; the sender. |
+| student_id | INT UNSIGNED | Yes | FK + UQ pair | References USERS.user_id; the recipient. |
+| job_id | INT UNSIGNED | Yes | FK + UQ pair | References OPPORTUNITIES.job_id. |
+| status | VARCHAR(20) | Yes | — | Proposed: SENT, ACCEPTED, DECLINED, or EXPIRED. |
+| sent_at | DATETIME | Yes | — | Time the invitation was sent. |
+
+Unique combination: (student_id, job_id).
+
+This is a design decision allowing one current invitation per
+student/opportunity pair. Reinvitation policy requires team confirmation.
+
+An invitation is not an application. Accepting an invitation does not
+automatically mean an application has been submitted.
+
+## 11. APPLICATIONS
+
+Stores a student's submission to an opportunity.
+
+| Field | Proposed type | Required? | Key | Description |
+|---|---|---|---|---|
+| application_id | INT UNSIGNED | Yes | PK | Unique application ID. |
+| student_id | INT UNSIGNED | Yes | FK + UQ pair | References USERS.user_id; the applicant. |
+| job_id | INT UNSIGNED | Yes | FK + UQ pair | References OPPORTUNITIES.job_id. |
+| status | VARCHAR(20) | Yes | — | Proposed: SUBMITTED, UNDER_REVIEW, INTERVIEW, REJECTED, or OFFERED. |
+| submitted_at | DATETIME | Yes | — | Time the application was submitted. |
+
+Unique combination: (student_id, job_id).
+
+This is a design decision preventing duplicate applications to the same
+opportunity. Reapplication policy requires team confirmation.
+
+A student may apply without receiving an invitation.
+The design does not store a direct invitation-to-application link.
+
+## 12. APPLICATION_POSTS
+
+Connects applications to selected portfolio posts.
+
+| Field | Proposed type | Required? | Key | Description |
+|---|---|---|---|---|
+| application_id | INT UNSIGNED | Yes | PK + FK | References APPLICATIONS.application_id. |
+| post_id | INT UNSIGNED | Yes | PK + FK | References POSTS.post_id. |
+
+Composite primary key: (application_id, post_id).
+
+An application can include multiple portfolio posts. A post can be used
+in multiple applications. The same pairing cannot appear twice.
+
+The application must verify that each selected post belongs to the
+applicant. Company verification is not required for every application
+post by the original requirements.
+
+## Shared implementation notes
+
+- Generate single-column ID primary keys automatically.
+- Proposed timestamp defaults use the current date and time.
+- Agree on email and skill-name case handling before implementation.
+- Foreign keys prove referenced records exist; they do not prove
+  the user has the appropriate role or permission.
+- Required fields, allowed values, status transitions, deletion behavior,
+  and the stated design assumptions need team confirmation.
+
+## Scope limitations
+
+This dictionary matches the simplified 12-table core ERD.
+
+Messaging, notifications, social interactions, advisor feedback,
+candidate lists, moderation, analytics, configurable permissions,
+extra application file attachments, and full decision history are
+deferred or simplified.
+
+It does not claim that every feature in the original functional
+requirements is supported or implemented.
