@@ -1,12 +1,5 @@
 # CareerUp Data Dictionary and ERD
 
-Oct 29, 2026 · @m
-
-The CareerUp MySQL 8 schema has 24 tables: 5 core entities (users, companies, posts, jobs, applications), 9 supporting tables for skills, media, comments and messaging, and 10 lookup, junction and admin tables. Key column: PK = primary key, FK = foreign key (→ parent table), PK, FK = both, None = neither. Required = Yes means NOT NULL; fields the database fills by default are marked "Yes (default)".
-
-## Entity relationship diagram
-
-The full ERD is a separate page: [CareerUp ERD](https://claude.ai/artifact/5GCPQUhECLSfE1QpR724wj). It draws all 24 tables with every column, PK and FK markers, and crow's-foot relationships. The Relationships table below lists the same 40 foreign keys in text form.
 
 ## Relationships
 
