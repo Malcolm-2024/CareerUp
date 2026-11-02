@@ -52,7 +52,7 @@ INSERT INTO companies (id, name, industry_id, description, website, locations, s
 -- 5. USERS  (single "name" column, UPPERCASE enums, student fields live here)
 INSERT INTO users (id, email, password_hash, role, status, name, school, grad_year, major_id, company_id, bio, interests) VALUES
 -- Students
-(101, 'jordan.student@famu.edu',   'hash_pass_101', 'STUDENT', 'ACTIVE', 'Jordan Monts', 'Florida A&M University', 2026, 1, NULL,
+(101, 'jordan.student@famu.edu',   'hash_pass_101', 'STUDENT', 'ACTIVE', 'Jorda Monts', 'Florida A&M University', 2026, 1, NULL,
  'Computer Science major passionate about mobile app dev and 3D modeling.',
  'Full-stack web applications and UI design.'),
 (102, 'maya.design@famu.edu',      'hash_pass_102', 'STUDENT', 'ACTIVE', 'Maya Lin',      'Florida A&M University', 2027, 2, NULL,
