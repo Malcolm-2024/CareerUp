@@ -140,3 +140,12 @@ SET FOREIGN_KEY_CHECKS = 1;
 
 -- Re-enable foreign key checks
 SET FOREIGN_KEY_CHECKS = 1;
+
+USE CareerUpDatabase;
+
+
+INSERT INTO users (id, email, password_hash, role, status, name)
+VALUES (802, 'fdouglass@famu.edu', 'hash_pass_802', 'STUDENT', 'ACTIVE', 'Frederick Douglass');
+
+
+SELECT * FROM users WHERE id = 802;
