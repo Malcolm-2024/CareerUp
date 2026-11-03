@@ -12,30 +12,30 @@ SET FOREIGN_KEY_CHECKS = 0;
 
 -- Drop tables in dependency-safe order if you need to rebuild the schema.
 -- These DROP statements are commented out to prevent accidental data loss.
--- DROP TABLE IF EXISTS reports;
--- DROP TABLE IF EXISTS advisor_notes;
--- DROP TABLE IF EXISTS advisor_students;
--- DROP TABLE IF EXISTS notifications;
--- DROP TABLE IF EXISTS messages;
--- DROP TABLE IF EXISTS invitations;
--- DROP TABLE IF EXISTS application_posts;
--- DROP TABLE IF EXISTS applications;
--- DROP TABLE IF EXISTS job_majors;
--- DROP TABLE IF EXISTS job_skills;
--- DROP TABLE IF EXISTS jobs;
--- DROP TABLE IF EXISTS interactions;
--- DROP TABLE IF EXISTS comments;
--- DROP TABLE IF EXISTS post_skills;
--- DROP TABLE IF EXISTS post_media;
--- DROP TABLE IF EXISTS posts;
--- DROP TABLE IF EXISTS student_skills;
--- DROP TABLE IF EXISTS settings;
--- DROP TABLE IF EXISTS role_permissions;
--- DROP TABLE IF EXISTS users;
--- DROP TABLE IF EXISTS companies;
--- DROP TABLE IF EXISTS industries;
--- DROP TABLE IF EXISTS skills;
--- DROP TABLE IF EXISTS majors;
+DROP TABLE IF EXISTS reports;
+DROP TABLE IF EXISTS advisor_notes;
+DROP TABLE IF EXISTS advisor_students;
+DROP TABLE IF EXISTS notifications;
+DROP TABLE IF EXISTS messages;
+DROP TABLE IF EXISTS invitations;
+DROP TABLE IF EXISTS application_posts;
+DROP TABLE IF EXISTS applications;
+DROP TABLE IF EXISTS job_majors;
+DROP TABLE IF EXISTS job_skills;
+DROP TABLE IF EXISTS jobs;
+DROP TABLE IF EXISTS interactions;
+DROP TABLE IF EXISTS comments;
+DROP TABLE IF EXISTS post_skills;
+DROP TABLE IF EXISTS post_media;
+DROP TABLE IF EXISTS posts;
+DROP TABLE IF EXISTS student_skills;
+DROP TABLE IF EXISTS settings;
+DROP TABLE IF EXISTS role_permissions;
+DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS companies;
+DROP TABLE IF EXISTS industries;
+DROP TABLE IF EXISTS skills;
+DROP TABLE IF EXISTS majors;
 USE CareerUpDatabase;
 CREATE TABLE IF NOT EXISTS industries (
     id INT UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -100,8 +100,6 @@ CREATE TABLE IF NOT EXISTS users (
     grad_year SMALLINT UNSIGNED NULL,
     bio TEXT NULL,
     interests TEXT NULL,
-    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     PRIMARY KEY (id),
     UNIQUE KEY uq_users_email (email),
     KEY idx_users_role_status (role, status),
