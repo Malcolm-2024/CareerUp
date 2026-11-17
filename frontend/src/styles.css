@@ -1,0 +1,1314 @@
+/* 1. BRAND COLORS */
+/* CHANGE HERE: theme colors below. Search a class name to change one specific control. */
+/* Shared theme: change these colors/fonts to update the app in one place. var(--purple) reuses the purple value below. */
+:root {
+  font-family: Inter, Arial, sans-serif;
+  color: #fff;
+  background: #0f0f1a;
+  font-synthesis: none;
+  font-weight: 400;
+  --bg: #0f0f1a;
+  --sidebar: #17172a;
+  --card: #202033;
+  --border: #303044;
+  --muted: #a1a1aa;
+  --indigo: #4f46e5;
+  --purple: #a855f7;
+  --coral: #f43f5e;
+  --orange: #fb923c;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+}
+/* These are element types, not three individual controls: every button, input and dropdown inherits the page font. */
+button,
+input,
+select {
+  font: inherit;
+}
+/* Keyboard focus: space between a control and its focus outline. */
+button,
+a,
+input,
+select {
+  outline-offset: 4px;
+}
+/* Touch feedback: applies to every button and link. */
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+/* All buttons: show a hand cursor. This does not identify a particular button. */
+button {
+  cursor: pointer;
+  color: inherit;
+}
+/* Disabled buttons: faded appearance, including options planned for later sprints. */
+button:disabled {
+  cursor: default;
+  opacity: 0.45;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+/* Default appearance for ALL buttons. A class rule below can specialize one group. */
+button {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--card);
+  padding: 10px 15px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 600;
+}
+/* Hover means the mouse is over an enabled button. */
+button:hover:not(:disabled) {
+  border-color: #a78bfa;
+}
+input,
+select {
+  color: #fff;
+  background: #171725;
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  padding: 12px;
+  font-size: 13px;
+  min-width: 0;
+}
+input::placeholder {
+  color: #8d8d9d;
+}
+input:focus,
+select:focus {
+  border-color: #a855f7;
+  outline: 2px solid #a855f72b;
+}
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+h1 {
+  font-size: 32px;
+  letter-spacing: -1.2px;
+  line-height: 1.2;
+}
+h2 {
+  font-size: 19px;
+  letter-spacing: -0.4px;
+}
+h3 {
+  font-size: 16px;
+  letter-spacing: -0.2px;
+}
+small {
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+.muted,
+p {
+  color: var(--muted);
+  line-height: 1.7;
+  font-size: 14px;
+}
+.eyebrow {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.7px;
+  color: #b9a4fb;
+}
+/* A dot names a CSS class: className="primary" in main.jsx uses this gradient style. */
+.primary {
+  background: linear-gradient(100deg, #4f46e5, #8b4fec);
+  border: 0;
+  border-radius: 10px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+  color: white;
+  font-weight: 600;
+  padding: 14px 20px;
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.brand img {
+  width: 45px;
+  height: 45px;
+  object-fit: contain;
+  border-radius: 10px;
+}
+.brand strong {
+  font-size: 25px;
+  letter-spacing: -1px;
+  display: block;
+}
+.brand strong span {
+  background: linear-gradient(90deg, #a855f7, #f43f5e, #fb923c);
+  background-clip: text;
+  color: transparent;
+}
+.brand small {
+  font-size: 9px;
+  display: block;
+  letter-spacing: 0.5px;
+}
+/* 2. SIGN-IN SCREEN */
+.login-page {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1.06fr 1fr;
+}
+.login-story {
+  padding: 38px 50px;
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at 20% 50%, #40255a55, transparent 65%),
+    linear-gradient(145deg, #17172a, #131324 55%, #302147);
+}
+.login-story:after {
+  content: "";
+  position: absolute;
+  width: 450px;
+  height: 450px;
+  background: linear-gradient(135deg, #a855f729, #f43f5e24);
+  border-radius: 100%;
+  bottom: -330px;
+  right: -50px;
+  filter: blur(20px);
+}
+.story-content {
+  max-width: 540px;
+  margin: 75px auto 40px;
+  position: relative;
+}
+.story-content h1 {
+  font-size: clamp(50px, 5vw, 76px);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -3.5px;
+  margin: 22px 0;
+}
+.story-content em {
+  font-style: normal;
+  background: linear-gradient(95deg, #a855f7, #f43f5e, #fb923c);
+  background-clip: text;
+  color: transparent;
+}
+.story-content p {
+  font-size: 16px;
+  color: #bebdcc;
+}
+.eyebrow > span {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #fb923c;
+  margin-right: 8px;
+}
+.story-cards {
+  display: flex;
+  gap: 18px;
+  margin: 32px 0 0;
+  height: 190px;
+  overflow: hidden;
+}
+.story-cards img {
+  width: 47%;
+  object-fit: cover;
+  object-position: center 15%;
+  border-radius: 16px;
+  border: 1px solid #ffffff20;
+  transform: rotate(-5deg);
+  margin-top: 8px;
+}
+.story-cards img + img {
+  transform: rotate(5deg);
+  margin-top: 30px;
+}
+.story-footer {
+  position: relative;
+  z-index: 1;
+}
+.login-main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 48px;
+  position: relative;
+}
+.signin-card {
+  width: 100%;
+  max-width: 390px;
+}
+.signin-card h2 {
+  font-size: 36px;
+  letter-spacing: -1.3px;
+  margin: 15px 0 6px;
+}
+.signin-card form {
+  margin-top: 32px;
+  display: grid;
+  gap: 21px;
+}
+.signin-card label {
+  font-size: 12px;
+  font-weight: 600;
+  display: grid;
+  gap: 9px;
+}
+.signin-card input {
+  padding: 15px;
+}
+/* Sign in button only. It also has the primary class, so both rules apply. */
+.login-submit {
+  width: 100%;
+  height: 48px;
+  margin-top: 2px;
+}
+.demo {
+  border-top: 1px solid var(--border);
+  padding-top: 25px;
+  margin-top: 30px;
+}
+.demo h3 {
+  font-size: 13px;
+}
+.demo p {
+  font-size: 11px;
+  margin: 7px 0 14px;
+}
+.demo-roles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-bottom: 14px;
+}
+/* The five demo-role buttons only; they fill the form and do not sign in by themselves. */
+.demo-roles button {
+  font-size: 11px;
+  padding: 9px 11px;
+  background: #191927;
+}
+.demo code {
+  color: #d0c7ed;
+}
+.login-main footer {
+  font-size: 10px;
+  color: #747483;
+  margin-top: 50px;
+}
+.app {
+  display: flex;
+  min-height: 100vh;
+}
+/* 3. LEFT NAVIGATION */
+.sidebar {
+  width: 240px;
+  position: fixed;
+  inset: 0 auto 0 0;
+  padding: 28px 18px 18px;
+  background: var(--sidebar);
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  z-index: 10;
+}
+.sidebar .brand {
+  padding: 0 7px;
+}
+.workspace-label {
+  font-size: 10px;
+  color: #888899;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin: 43px 12px 17px;
+}
+/* Sidebar links/buttons. active marks the current page; future marks a disabled option. */
+.nav-item {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 12px;
+  border: 0;
+  background: none;
+  padding: 14px;
+  width: 100%;
+  font-size: 12px;
+  font-weight: 500;
+  border-radius: 10px;
+  margin: 3px 0;
+  color: #b4b4c2;
+}
+.nav-item.active {
+  background: linear-gradient(90deg, #4f46e538, #a855f71a);
+  color: #fff;
+  border: 1px solid #7160d944;
+}
+.nav-item.active > svg {
+  color: #c2adff;
+}
+.nav-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #a78bfa;
+  margin-left: auto;
+}
+.nav-item.future {
+  opacity: 0.48;
+}
+.nav-item.future > svg:last-child {
+  margin-left: auto;
+}
+.later-note {
+  font-size: 10px;
+  color: #79798c;
+  line-height: 1.7;
+  padding: 19px 13px;
+}
+.sidebar-bottom {
+  margin-top: auto;
+}
+.mini-brand {
+  padding: 24px 13px 26px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.mini-brand > span {
+  font-size: 32px;
+  color: #d77cdb;
+}
+.mini-brand p {
+  font-size: 11px;
+  line-height: 1.6;
+}
+.mini-brand strong {
+  color: #ddd;
+}
+.account {
+  border-top: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 20px 7px 12px;
+}
+.account strong {
+  font-size: 11px;
+  display: block;
+  max-width: 142px;
+  overflow-wrap: anywhere;
+}
+.account small {
+  display: block;
+  font-size: 9px;
+}
+.avatar {
+  height: 36px;
+  width: 36px;
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #503b85, #9e5280);
+  color: #f4e9ff;
+  border: 2px solid #ffffff12;
+}
+.avatar.large {
+  width: 58px;
+  height: 58px;
+  font-size: 19px;
+}
+.signout {
+  font-size: 11px;
+  background: transparent;
+  border: 0;
+  color: #b4b4c2;
+  width: 100%;
+  justify-content: flex-start;
+  padding-left: 10px;
+}
+.workspace {
+  margin-left: 240px;
+  flex: 1;
+  min-width: 0;
+}
+.topbar {
+  height: 74px;
+  border-bottom: 1px solid #272737;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 38px;
+}
+.breadcrumb {
+  font-size: 11px;
+  color: #8c8c9e;
+}
+.breadcrumb span {
+  padding: 0 14px;
+  color: #484859;
+}
+.breadcrumb strong {
+  color: #d7d7e4;
+  font-weight: 500;
+}
+.role-pill {
+  background: #202033;
+  border: 1px solid var(--border);
+  color: #cebedf;
+  font-size: 10px;
+  display: flex;
+  gap: 7px;
+  padding: 8px 11px;
+  border-radius: 20px;
+}
+.account-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.switch-account {
+  color: #e5d8ff;
+  background: #4f46e526;
+  border-color: #7160d966;
+  font-size: 11px;
+  white-space: nowrap;
+}
+.sidebar {
+  overflow-y: auto;
+}
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: #0f0f1a;
+}
+@media (max-width: 760px) {
+  .account-actions .role-pill {
+    display: none;
+  }
+  .switch-account {
+    font-size: 9px;
+    padding: 9px 7px;
+  }
+  .breadcrumb {
+    display: none;
+  }
+  .account-actions {
+    margin-left: auto;
+  }
+}
+.page {
+  padding: 36px 38px 28px;
+  max-width: 1600px;
+  margin: 0 auto;
+  min-height: calc(100vh - 126px);
+}
+.page-heading {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  align-items: center;
+  margin-bottom: 30px;
+}
+.page-heading h1 {
+  margin: 12px 0 9px;
+}
+.page-heading p {
+  font-size: 12px;
+}
+.heading-symbol {
+  width: 65px;
+  height: 65px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #4f46e524, #a855f71c);
+  border: 1px solid #6d529e55;
+  border-radius: 20px;
+  color: #bca2fa;
+}
+/* 4. SEARCH AND FILTERS */
+.filters {
+  background: #171724;
+  border: 1px solid var(--border);
+  border-radius: 13px;
+  padding: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+.search-form {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  min-width: 220px;
+  gap: 9px;
+  border: 1px solid var(--border);
+  background: #10101b;
+  border-radius: 8px;
+  padding: 0 5px 0 12px;
+}
+.search-form > svg {
+  color: #858592;
+  flex-shrink: 0;
+}
+.search-form input {
+  background: none;
+  border: 0;
+  padding: 12px 0;
+  flex: 1;
+  width: 100%;
+  font-size: 11px;
+}
+.search-form input:focus {
+  outline: none;
+}
+.search-form:focus-within {
+  outline: 2px solid #a855f7;
+}
+/* Search submit button inside the shared search form. */
+.search-form button {
+  padding: 8px 13px;
+  font-size: 10px;
+  background: #39305e;
+  border: 0;
+}
+.filters select {
+  font-size: 10px;
+  padding: 12px 9px;
+  max-width: 210px;
+}
+/* Reset button beside the search/filters. */
+.reset {
+  background: none;
+  border: 0;
+  font-size: 10px;
+  color: #b7a7dc;
+  padding: 8px;
+}
+.section-line {
+  margin: 28px 0 18px;
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: center;
+}
+.section-line h2 {
+  font-size: 14px;
+  display: flex;
+  gap: 9px;
+  align-items: center;
+}
+.section-line small {
+  font-size: 10px;
+}
+.count {
+  font-size: 10px;
+  background: #a855f71a;
+  color: #cdb1ff;
+  padding: 3px 7px;
+  border: 1px solid #71538b44;
+  border-radius: 5px;
+  font-weight: 500;
+}
+/* Student feed layout; project media and cards are styled in the rules below. */
+.feed-layout {
+  display: grid;
+  grid-template-columns: minmax(260px, 550px) minmax(200px, 1fr);
+  gap: 30px;
+  justify-content: center;
+  max-width: 1050px;
+  margin: auto;
+}
+.feed {
+  display: grid;
+  gap: 24px;
+}
+.post {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 17px;
+  overflow: hidden;
+}
+.post-author {
+  padding: 15px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.post-author strong {
+  font-size: 12px;
+  display: block;
+}
+.post-author small {
+  display: block;
+  font-size: 9px;
+}
+.badge {
+  font-size: 8px;
+  color: #d8c2ff;
+  border: 1px solid #a855f73b;
+  background: #a855f717;
+  padding: 5px 8px;
+  border-radius: 20px;
+  display: inline-flex;
+  gap: 4px;
+  align-items: center;
+}
+.post-author .badge {
+  margin-left: auto;
+}
+.project-media {
+  aspect-ratio: 4/4.5;
+  position: relative;
+  background: #11111f;
+  overflow: hidden;
+}
+.project-media img,
+.project-media video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.project-media video {
+  object-fit: contain;
+}
+.post-body {
+  padding: 22px;
+}
+.post-body .eyebrow {
+  font-size: 8px;
+}
+.post-body h3 {
+  font-size: 20px;
+  margin: 9px 0;
+}
+.post-body p {
+  font-size: 11px;
+  margin-bottom: 15px;
+}
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.tags span {
+  font-size: 9px;
+  padding: 5px 8px;
+  color: #d5c9ea;
+  border-radius: 5px;
+  background: #a18bdb13;
+  border: 1px solid #a18bdb25;
+}
+.company-label {
+  display: flex;
+  gap: 7px;
+  align-items: center;
+  font-size: 9px;
+  margin-top: 15px;
+}
+.feed-aside {
+  padding: 27px 18px 30px;
+  align-self: start;
+  position: sticky;
+  top: 24px;
+}
+.feed-aside h2 {
+  font-size: 30px;
+  line-height: 1.25;
+  letter-spacing: -1px;
+  margin: 24px 0 15px;
+}
+.feed-aside p {
+  font-size: 12px;
+  max-width: 280px;
+}
+.feed-aside h3 {
+  font-size: 13px;
+  margin: 20px 0 10px;
+}
+.rule {
+  height: 1px;
+  background: var(--border);
+  margin-top: 32px;
+}
+.color-stripe {
+  height: 4px;
+  width: 80px;
+  border-radius: 4px;
+  background: linear-gradient(90deg, #4f46e5, #a855f7, #f43f5e, #fb923c);
+  margin: 24px 0;
+}
+.feed-aside > small {
+  display: block;
+  font-size: 10px;
+  max-width: 240px;
+}
+/* 5. STUDENT DIRECTORY */
+.student-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+.student-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 15px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.student-top {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  gap: 8px;
+}
+.class-year {
+  font-size: 9px;
+  color: #b6a4d8;
+}
+.student-card h3 {
+  font-size: 18px;
+  margin-bottom: 7px;
+}
+.major-name {
+  font-size: 10px;
+  color: #bfa6ef;
+  font-weight: 500;
+}
+.student-card .school {
+  font-size: 10px;
+  margin: 6px 0 17px;
+}
+.student-card > p:not(.school) {
+  font-size: 11px;
+  margin-bottom: 19px;
+  flex: 1;
+}
+/* View career profile button on an advisor student card. */
+.profile-button {
+  margin-top: 23px;
+  background: #4f46e52b;
+  border: 1px solid #7b6ed244;
+  color: #dbccf7;
+  width: 100%;
+  justify-content: space-between;
+  font-size: 10px;
+}
+/* 6. ADMINISTRATOR USER DIRECTORY */
+.table-wrap {
+  overflow: auto;
+  border: 1px solid var(--border);
+  border-radius: 13px;
+  background: #181826;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  white-space: nowrap;
+  text-align: left;
+  font-size: 11px;
+}
+th {
+  color: #a3a3b5;
+  background: #1e1e30;
+  font-size: 10px;
+  font-weight: 500;
+  padding: 16px 20px;
+}
+td {
+  padding: 17px 20px;
+  border-top: 1px solid #2b2b3c;
+  color: #c1c1cf;
+}
+td small {
+  display: block;
+  font-size: 9px;
+}
+.table-user {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+}
+.table-user strong {
+  color: white;
+  font-size: 11px;
+}
+.status {
+  font-size: 8px;
+  letter-spacing: 0.4px;
+  color: #f4c28a;
+  background: #fb923c13;
+  border: 1px solid #fb923c26;
+  padding: 5px 8px;
+  border-radius: 5px;
+}
+.status.positive {
+  background: #6ee7b712;
+  color: #8cddbc;
+  border-color: #6ee7b724;
+}
+/* 7. COMPANY VERIFICATION REQUESTS */
+.request-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+.request-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 24px;
+}
+.request-top {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  margin-bottom: 23px;
+}
+.request-top h3 {
+  font-size: 12px;
+}
+.request-top small {
+  font-size: 9px;
+}
+.request-top .status {
+  margin-left: auto;
+}
+.request-card > h3 {
+  font-size: 17px;
+  margin-bottom: 11px;
+}
+.request-card > p {
+  font-size: 11px;
+  margin-bottom: 18px;
+}
+.request-card details {
+  border-top: 1px solid var(--border);
+  margin-top: 22px;
+  padding-top: 16px;
+}
+.request-card summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  color: #bda5ef;
+  font-size: 11px;
+}
+.request-card .project-media {
+  margin-top: 15px;
+  border-radius: 12px;
+  max-height: 350px;
+}
+.media-fallback {
+  display: flex;
+  min-height: 180px;
+  background: linear-gradient(130deg, #24243e, #2d2341);
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 15px;
+  color: #c3b8e8;
+  font-size: 12px;
+}
+.media-fallback small {
+  font-size: 10px;
+}
+/* Previous/Next controls below result lists. */
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 9px;
+  margin-top: 24px;
+}
+.pagination span {
+  font-size: 11px;
+  color: var(--muted);
+  margin-right: auto;
+}
+.pagination button {
+  font-size: 10px;
+}
+.app-footer {
+  border-top: 1px solid #252535;
+  padding: 18px 38px;
+  font-size: 10px;
+  color: #9797a9;
+  display: flex;
+  justify-content: space-between;
+}
+.app-footer span {
+  color: #676779;
+  font-size: 9px;
+}
+.empty,
+.loading,
+.no-access {
+  padding: 65px 20px;
+  text-align: center;
+  border: 1px dashed var(--border);
+  border-radius: 12px;
+  color: #b6a1e5;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 14px;
+}
+.loading {
+  font-size: 12px;
+}
+.empty h3 {
+  color: #fff;
+}
+.error {
+  padding: 14px;
+  background: #f43f5e12;
+  border: 1px solid #f43f5e45;
+  color: #ffb7c5;
+  border-radius: 9px;
+  font-size: 12px;
+  line-height: 1.6;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin: 10px 0;
+}
+.error button {
+  flex-shrink: 0;
+  padding: 6px;
+  font-size: 10px;
+}
+.boot {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  padding: 30px;
+}
+.spin {
+  animation: spin 1.2s linear infinite;
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.modal-shade {
+  position: fixed;
+  inset: 0;
+  background: #080812dd;
+  backdrop-filter: blur(6px);
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+}
+/* 8. CAREER ADVISOR PROFILE */
+.profile-dialog {
+  position: relative;
+  margin: 0;
+  max-height: 90vh;
+  overflow: auto;
+  max-width: 940px;
+  width: 100%;
+  border: 1px solid #49405b;
+  border-radius: 20px;
+  padding: 35px;
+  background: #171725;
+  color: white;
+}
+.close {
+  position: absolute;
+  right: 18px;
+  top: 18px;
+  padding: 7px;
+  background: #29283d;
+}
+.profile-hero {
+  display: flex;
+  gap: 18px;
+  align-items: center;
+  margin: 10px 35px 24px 0;
+}
+.profile-hero h2 {
+  font-size: 27px;
+  margin: 9px 0;
+}
+.profile-hero p {
+  font-size: 11px;
+}
+.profile-dialog > h3 {
+  margin: 25px 0 15px;
+}
+.profile-dialog > p {
+  font-size: 12px;
+}
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+.compact-post .project-media {
+  aspect-ratio: 1;
+}
+.compact-post .post-author .badge {
+  display: none;
+}
+.compact-post .post-body {
+  padding: 18px;
+}
+.compact-post .post-body h3 {
+  font-size: 17px;
+}
+.compact-post .post-body p {
+  font-size: 11px;
+}
+.no-access h1 {
+  font-size: 25px;
+}
+/* 9. RESPONSIVE LAYOUTS */
+@media (min-width: 1500px) {
+  .page {
+    padding: 45px 60px;
+  }
+  .topbar {
+    padding: 0 60px;
+  }
+  .student-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+@media (max-width: 1150px) {
+  .student-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .page {
+    padding: 28px 24px;
+  }
+  .topbar {
+    padding: 0 24px;
+  }
+  .feed-layout {
+    grid-template-columns: minmax(240px, 1fr);
+  }
+  .feed-aside {
+    display: none;
+  }
+  .feed {
+    max-width: 540px;
+    margin: auto;
+    width: 100%;
+  }
+  .filters select {
+    max-width: 180px;
+  }
+  .request-list {
+    grid-template-columns: 1fr;
+  }
+  .login-story {
+    padding: 35px;
+  }
+  .story-content h1 {
+    font-size: 59px;
+  }
+}
+@media (max-width: 760px) {
+  .login-page {
+    grid-template-columns: 1fr;
+  }
+  .login-story {
+    padding: 23px;
+    background: #17172a;
+  }
+  .login-story .story-content,
+  .story-footer {
+    display: none;
+  }
+  .login-main {
+    padding: 40px 24px;
+  }
+  .signin-card h2 {
+    font-size: 30px;
+  }
+  .sidebar {
+    width: 76px;
+    padding: 20px 8px;
+  }
+  .sidebar .brand {
+    padding: 0;
+    justify-content: center;
+  }
+  .sidebar .brand > div,
+  .workspace-label,
+  .sidebar .later-note,
+  .mini-brand,
+  .account > div,
+  .signout,
+  .nav-item.future {
+    display: none;
+  }
+  .sidebar .brand img {
+    width: 43px;
+  }
+  .sidebar nav {
+    margin-top: 35px;
+  }
+  .nav-item {
+    font-size: 0;
+    justify-content: center;
+    padding: 15px 10px;
+  }
+  .nav-item > svg {
+    flex-shrink: 0;
+  }
+  .nav-dot {
+    display: none;
+  }
+  .sidebar-bottom .account {
+    justify-content: center;
+  }
+  .workspace {
+    margin-left: 76px;
+  }
+  .topbar {
+    padding: 0 17px;
+    height: 64px;
+  }
+  .breadcrumb {
+    font-size: 10px;
+  }
+  .breadcrumb span {
+    padding: 0 8px;
+  }
+  .role-pill {
+    font-size: 8px;
+    padding: 7px;
+  }
+  .page {
+    padding: 26px 17px;
+  }
+  .page-heading h1 {
+    font-size: 25px;
+    letter-spacing: -0.8px;
+  }
+  .page-heading .eyebrow {
+    font-size: 8px;
+  }
+  .page-heading p {
+    font-size: 11px;
+  }
+  .heading-symbol {
+    display: none;
+  }
+  .filters {
+    padding: 10px;
+  }
+  .search-form {
+    min-width: 180px;
+  }
+  .filters select {
+    flex: 1;
+    max-width: 100%;
+    font-size: 10px;
+  }
+  .section-line {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .student-grid {
+    grid-template-columns: 1fr;
+  }
+  .student-card {
+    padding: 20px;
+  }
+  .post-author .badge {
+    display: none;
+  }
+  .post-body h3 {
+    font-size: 18px;
+  }
+  .post-body {
+    padding: 18px;
+  }
+  .app-footer {
+    padding: 17px;
+  }
+  .app-footer > span {
+    display: none;
+  }
+  .modal-shade {
+    padding: 12px;
+  }
+  .profile-dialog {
+    padding: 24px 18px;
+    border-radius: 15px;
+  }
+  .portfolio-grid {
+    grid-template-columns: 1fr;
+  }
+  .profile-hero {
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .profile-hero h2 {
+    font-size: 21px;
+  }
+  .profile-hero .avatar {
+    width: 42px;
+    height: 42px;
+    font-size: 14px;
+  }
+  .request-card {
+    padding: 18px;
+  }
+  .request-top {
+    flex-wrap: wrap;
+  }
+  .pagination button {
+    padding: 9px;
+  }
+  .pagination span {
+    font-size: 9px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .spin {
+    animation: none;
+  }
+  * {
+    scroll-behavior: auto !important;
+  }
+}
