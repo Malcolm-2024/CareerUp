@@ -44,7 +44,7 @@ const ROLES = {
 // future lists the disabled navigation options for each role.
 const CONFIG = {
   STUDENT: {
-    title: "Discover",
+    title: "Discover",2. ROLE LANDING PAGES AND NAVIGATION
     heading: "Great work deserves to be seen.",
     sub: "Explore projects, ideas and the people building what comes next.",
     endpoint: "/student/feed",
@@ -235,7 +235,7 @@ function Login({ onLogin }) {
         <div className="signin-card">
           <div className="eyebrow">WELCOME TO CAREERUP</div>
           {/* SIGN-IN HEADING: edit the visible welcome text here. */}
-          <h2>Welcome back.</h2>
+          <h2>Hay.</h2>
           <p className="muted">Sign in to find your next opportunity.</p>
           <form onSubmit={submit}>
             <label>
