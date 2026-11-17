@@ -235,7 +235,7 @@ function Login({ onLogin }) {
         <div className="signin-card">
           <div className="eyebrow">WELCOME TO CAREERUP</div>
           {/* SIGN-IN HEADING: edit the visible welcome text here. */}
-          <h2>Wuddup.</h2>
+          <h2>Hay.</h2>
           <p className="muted">Sign in to find your next opportunity.</p>
           <form onSubmit={submit}>
             <label>
