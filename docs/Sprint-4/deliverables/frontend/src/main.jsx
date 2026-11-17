@@ -44,7 +44,7 @@ const ROLES = {
 // future lists the disabled navigation options for each role.
 const CONFIG = {
   STUDENT: {
-    title: "Discover",2. ROLE LANDING PAGES AND NAVIGATION
+    title: "Discover",
     heading: "Great work deserves to be seen.",
     sub: "Explore projects, ideas and the people building what comes next.",
     endpoint: "/student/feed",
