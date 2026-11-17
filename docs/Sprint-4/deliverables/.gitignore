@@ -1,0 +1,13 @@
+.idea/
+node_modules/
+frontend/dist/
+backend/target/
+.local/
+.env
+*.log
+backend/src/main/resources/static/
+__pycache__/
+release/
+/CareerUp.exe
+/runtime/
+/app/

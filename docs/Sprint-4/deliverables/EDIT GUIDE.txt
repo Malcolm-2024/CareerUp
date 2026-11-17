@@ -1,0 +1,58 @@
+CAREERUP - WHERE DO I CHANGE IT?
+Open a file in IntelliJ. Ctrl+F the exact label below.
+Numbered headings match the existing source style; they are not line numbers.
+
+SCREEN WORDING / BUTTON TEXT
+File: frontend/src/main.jsx
+Login: 6. SIGN-IN SCREEN AND DEMO ROLE BUTTONS
+Role headings/menu: 2. ROLE LANDING PAGES AND NAVIGATION
+Tagline: 4. CAREERUP BRANDING AND TAGLINE
+Buttons: search SIGN IN BUTTON, SEARCH BUTTON, RESET BUTTON or the visible text.
+Results: 11. STUDENT DISCOVERY FEED / 12. ADMINISTRATOR USER DIRECTORY /
+13. COMPANY VERIFICATION REQUESTS / 14. RECRUITER AND CAREER ADVISOR STUDENT DIRECTORY
+
+COLORS / SIZE / SPACING
+File: frontend/src/styles.css
+Theme: 1. BRAND COLORS
+One button: find its className in main.jsx, then Ctrl+F that class in styles.css.
+
+WHAT THE DATABASE SEARCH RETURNS
+File: backend/src/main/java/io/careerup/ApiController.java
+Student posts: 10. STUDENT DISCOVERY FEED
+Admin users: 4. ADMINISTRATOR USER SEARCH
+Recruiter/advisor filters: 5. STUDENT SEARCH QUERY
+Company requests: 11. COMPANY COLLABORATION AND VERIFICATION REQUESTS
+Partial matching/paging: 3. SHARED SEARCH AND PAGINATION
+Changing the search box does NOT change the SQL. Keep named parameters and access restrictions.
+
+WHO MAY ACCESS A PAGE'S DATA
+File: backend/src/main/java/io/careerup/SecurityConfig.java
+4. ROLE-BASED BACKEND AUTHORIZATION
+Wrong-role page wording: frontend/src/main.jsx; search 403.
+
+SESSION TIMEOUT / CONNECTION
+File: backend/src/main/resources/application.properties
+Search server.servlet.session.timeout (currently 5m).
+The launcher supplies DB_URL, DB_USER and DB_PASSWORD.
+
+ACCOUNT ROLE / PROJECT TITLE / OTHER SAVED DATA
+Edit the matching row in MySQL through IntelliJ. Inspect the row first, then
+update ONLY that row using its real primary key. Refresh the browser.
+After a role change: sign out, then sign in again.
+Do not guess column names: inspect the table/schema.
+DemoData.java creates examples ONCE. Editing it does not update existing rows.
+Original db/seeds.sql and its numbered labels have been preserved.
+
+SHOW A CODE EDIT
+1. Save the edit.
+2. Run Team Tools/Rebuild CareerUp.cmd (Windows) or .command (Mac).
+3. Refresh the browser. Backend restart may require signing in again.
+
+SHOW PUSH / PULL
+Use Git clones on both computers, on the SAME branch; ZIP folders cannot pull.
+Editor: git add <edited-file>, git commit -m "Describe change", git push.
+Teammate: Team Tools/Pull Latest and Run; refresh and show the change.
+The updated source must actually be pushed to the team's remote first.
+The included team-change.bundle belongs to the original download; it does not
+contain these later comment edits. Commit the updated files from this ZIP in
+your working clone before sharing them through GitHub. Never commit .local.

@@ -1,0 +1,103 @@
+CAREERUP - SPRINT 4
+From Resumes to Reels
+
+OPEN CAREERUP
+1. Extract the ENTIRE ZIP. Keep the folder contents together.
+2. Windows: double-click CareerUp.exe.
+   Mac: double-click Start CareerUp.command (macOS 15+; Intel or Apple Silicon).
+3. Wait for the browser, choose a demo role, then Sign in.
+
+Windows includes Java and uses installed MySQL 8 tools or downloads a private copy.
+Mac automatically downloads its matching Java 21 and MySQL 8 tools on first use.
+Internet is required for first-time downloads; allow several minutes.
+Mac startup has NOT been tested on an actual Mac here. Test before presentation.
+If macOS blocks the unsigned command, use the system's Open confirmation; no
+security settings are changed by our launcher. Terminal fallback, in this folder:
+  bash scripts/run-mac.sh
+Older macOS versions are not supported by this automatic package.
+The app uses a separate demo database; your Sprint 3 database is not reset.
+
+NORMAL USE: open the launcher and use the browser. You do not need Team Tools.
+TEAM TOOLS: Stop closes the background app; Rebuild applies source-code edits;
+Pull Latest and Run gets committed GitHub changes and rebuilds in a Git clone.
+Use .cmd on Windows and .command on Mac. Closing the browser does not stop it.
+Source rebuilds automatically download missing Node/Maven build tools.
+
+DEMO SIGN-IN
+Choose a role on the login page to fill in its email and password, then Sign in.
+Password for all five: CareerUp4!
+Student:                 student@careerup.demo
+Recruiter:               recruiter@careerup.demo
+Company Representative: company@careerup.demo
+Career Advisor:          advisor@careerup.demo
+Administrator:           admin@careerup.demo
+
+SWITCH ACCOUNTS AND CHECK ROLE ACCESS
+Use Sign out / Switch account in the top-right corner, then choose another role.
+Closing a browser tab keeps the login until 5 minutes of server inactivity.
+To test: sign in, close the tab, wait over 5 minutes, then reopen CareerUp.
+To test permissions: as Student, change #STUDENT in the browser address to
+#ADMIN. The app shows 403 ACCESS DENIED. Use the return button to go back.
+The backend also blocks other-role data, even if someone types an API URL.
+
+STUDENT SEARCH
+Search stored project titles, descriptions, student names, majors or skills.
+Working demo examples: Campus, Nia, Python, Figma, Computer Information Systems.
+Show all projects (or Reset) clears the search and restores published posts.
+No results is correct when no stored project matches; this is not internet search.
+If you change an account's role in MySQL, sign out and sign in again to test it.
+
+EDIT, PUSH, PULL, AND SHOW THE CHANGE
+The GitHub checkout is the team development version. The ZIP is a run/source
+package, not a live Git checkout. Do not try to git pull inside the ZIP folder.
+
+The first uploader, in an existing clone of Malcolm-2024/CareerUp:
+  git fetch "C:/path/to/the/extracted/CareerUp-Sprint4/team-change.bundle" sprint4-working-app:sprint4-working-app
+  git switch sprint4-working-app
+  git push -u origin sprint4-working-app
+If this branch already exists locally, use the existing development checkout.
+The team branch must be uploaded before classmates can pull it from GitHub.
+
+Other team members:
+  git clone --branch sprint4-working-app https://github.com/Malcolm-2024/CareerUp.git
+  cd CareerUp
+  Open "Team Tools/Start CareerUp.cmd" on Windows.
+  Open "Start CareerUp.command" on Mac.
+IntelliJ's downloaded JDK can run Team Tools/Start CareerUp.cmd in a Git checkout.
+The complete download includes Java; its rebuild button fetches Node/Maven
+privately if those build tools are missing.
+
+During the presentation:
+1. One person edits source (for example the login heading in frontend/src/main.jsx).
+2. They commit and push using THEIR OWN GitHub account:
+     git add frontend/src/main.jsx
+     git commit -m "Update sign-in welcome heading"
+     git push
+3. Another person double-clicks "Team Tools/Pull Latest and Run.cmd" in THEIR Git checkout.
+   It pulls the current branch, rebuilds React and Spring Boot, and restarts the app.
+4. Refresh the browser and show the change. Sign in again if the restart logged you out.
+Local uncommitted edits or conflicting histories stop the update safely.
+Nothing is force-pushed, discarded, or automatically merged.
+
+To show your own edit before pushing: double-click "Team Tools/Rebuild CareerUp.cmd".
+Source folders: frontend (React), backend (Java Spring Boot), db (MySQL), scripts (tests/build).
+
+MYSQL IN INTELLIJ
+IntelliJ's Database panel connects to the same real MySQL server used by the app.
+For this native Windows copy, open .local/IntelliJ MySQL Connection.txt.
+It contains the exact host, port, database, username and password for IntelliJ.
+Do not send or upload .local; it is private runtime state.
+
+MAC TEAMMATE UPDATES
+In a Git clone, use Team Tools/Pull Latest and Run.command after a teammate pushes.
+The launcher detects Apple Silicon/Intel. Downloads stay inside .local, not in
+system folders. Java/MySQL licenses remain in the downloaded vendor archives.
+A downloaded ZIP is a test/source deliverable, not a Git checkout.
+
+FIND CODE QUICKLY
+Open EDIT GUIDE.txt. It lists the numbered Ctrl+F labels used in the code.
+
+Never share .local, private credentials or database files in GitHub.
+The test account passwords above are intentionally public demo credentials.
+The original Sprint 3 schema and seed files remain unchanged; use only the
+sprint4_schema/sprint4_seed files for new demo imports, not on a shared database.

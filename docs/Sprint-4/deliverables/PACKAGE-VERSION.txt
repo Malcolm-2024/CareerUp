@@ -1,0 +1,7 @@
+Source commit: b731cd0261bbe2f11992e6e2f64a103cba817851
+Application SHA256: 3faef92fc806fa13c4a8aab79e84dbfa1862b7b1d264cece06b5039ee9aedbaf
+Windows: CareerUp.exe. Mac: Start CareerUp.command (macOS 15+).
+Development shortcuts are in Team Tools. Full source and prebuilt app included.
+Windows includes Java; Mac downloads verified architecture-specific Java/MySQL on first use.
+No PowerShell is used by the Windows startup or rebuild buttons.
+Windows checked locally; Mac archives/checksums checked, but startup has not been executed on an actual Mac.
