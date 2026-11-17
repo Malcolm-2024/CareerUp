@@ -1,0 +1,11 @@
+NORMAL TESTING: use CareerUp.exe (Windows) or Start CareerUp.command (Mac) in the main folder.
+
+These are optional developer shortcuts:
+Stop CareerUp: stop this app in the background; keep demo data.
+Rebuild CareerUp: rebuild after editing code, then refresh the browser.
+Pull Latest and Run: pull committed GitHub changes and rebuild (Git clone only).
+Start CareerUp.cmd: Windows alternative for source checkouts with Java available.
+
+Windows: use .cmd files. Mac: use .command files.
+For the presentation, use a Git clone, commit/push your edit, then have a teammate
+use Pull Latest and Run in THEIR clone. Downloaded ZIP folders cannot git pull.
