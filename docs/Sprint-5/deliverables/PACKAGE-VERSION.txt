@@ -1,0 +1,3 @@
+CareerUp Sprint 5, based on GitHub main a4f107e59bc53971db62aebf8deefd54a3f71d95.
+Sprint 5 additions only; original Sprint 0-4 files preserved.
+See docs/Sprint-5/docs/VERIFICATION.md in the repository for test results and limits.

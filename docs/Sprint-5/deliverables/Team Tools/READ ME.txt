@@ -1,0 +1,4 @@
+Windows: Start-CareerUp.bat in the parent folder starts Sprint 5. Mac: Start CareerUp.command.
+After editing or pulling: Rebuild CareerUp.cmd (Windows) or Rebuild CareerUp.command (Mac).
+Stop CareerUp stops only this copy and retains its data. Pull Latest and Run requires a clean Git checkout with the team branch configured.
+Your local database details are in .local/IntelliJ MySQL Connection.txt. Keep that file private.

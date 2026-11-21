@@ -1,0 +1,2 @@
+Sprint 5: Windows -> Start-CareerUp.bat. Mac -> Start CareerUp.command.
+See README.md for the five demo workflows. Your private database is separate from Sprint 4.

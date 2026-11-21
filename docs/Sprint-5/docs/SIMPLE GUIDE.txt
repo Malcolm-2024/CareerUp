@@ -1,0 +1,159 @@
+CAREERUP SPRINT 5 - SIMPLE DEMO GUIDE
+
+WHAT THIS SPRINT DOES
+Sprint 4 let each role sign in and view information.
+Sprint 5 adds five ways to save or change information in MySQL.
+The existing sign-in, searches, navigation and design are kept.
+
+START HERE
+1. Open docs/Sprint-5/deliverables in your project.
+2. Windows: double-click Start-CareerUp.bat.
+   Mac: open Start CareerUp.command.
+3. Wait for the browser to open. Leave CareerUp running.
+4. Sign in using the accounts below. Sign out between roles.
+
+First startup can take longer while missing tools are prepared.
+Start and check the application before recording your demonstration.
+Mac startup still needs to be checked on your teammate's actual Mac.
+
+DEMO ACCOUNTS
+All five demo accounts use this password: CareerUp4!
+
+Administrator: admin@careerup.demo
+Student: student@careerup.demo
+Recruiter: recruiter@careerup.demo
+Company Representative: company@careerup.demo
+Career Advisor: advisor@careerup.demo
+
+THE FIVE DEMONSTRATIONS
+Follow these in order if one person is presenting everything.
+
+1. ADMINISTRATOR - CHANGE ACCOUNT STATUS
+   Open Account status. Select another account, not your own.
+   Change its status and save. Show the updated status.
+   Shortcut: click Change status beside the account in the directory.
+   This selects that account in the form; nothing changes until you save.
+   Activate it again so the next demonstration can use that account.
+   Say: "An administrator can activate or deactivate an account.
+   The change is saved in the database."
+
+2. STUDENT - CREATE A PORTFOLIO POST
+   Open Create portfolio post. Enter a title and description.
+   Choose a picture or video from your computer, then publish.
+   Check its preview first. After saving, click View your post to open
+   that exact saved project. Show all projects returns to the full feed.
+   Show the new post in the discovery feed.
+   Say: "The student creates a portfolio post. MySQL stores the post
+   details, and the uploaded media is saved on this computer."
+   Supported pictures: JPG, PNG and GIF, up to 10 MB.
+   Supported videos: MP4 and WebM, up to 50 MB.
+   A direct media link is also available instead of a file upload.
+   Upload saving, database records, access checks and restart persistence
+   passed local tests. Check playback in your own browser before recording.
+
+3. RECRUITER - CREATE AN OPPORTUNITY
+   Open Create opportunity. Enter a title, description and location.
+   Choose a job or internship and publish.
+   Show it in the saved opportunities list.
+   Say: "A recruiter can publish an opportunity for their company."
+
+4. COMPANY REPRESENTATIVE - REVIEW A REQUEST
+   Find a pending project card and click Review request.
+   CareerUp opens the review form above and selects that exact request.
+   Approve or reject it, then save. Show the updated request list.
+   Say: "The company can verify or reject a student's collaboration.
+   It can only change requests linked to its own company."
+   A completed request is no longer pending. Check that a pending
+   request is available before recording; do not reset the database.
+
+   WHY WE CHOSE THIS FLOW IN SPRINT 5
+   You can inspect the student's project first, then review that request
+   without searching for it again. One shared form keeps the screen simple
+   and makes the final decision clear before saving. Approved/rejected
+   projects stay viewable; only pending cards offer Review request.
+   Presenter wording: "I can inspect this project, click Review request,
+   and the matching request is selected above. I choose approve or reject
+   and save. The updated status comes from our MySQL database."
+
+5. CAREER ADVISOR - GIVE FEEDBACK
+   Open Give feedback. Choose Nia and one of her portfolio posts.
+   Shortcut: open a student's career profile and click Give feedback
+   under a project. The form selects both the student and that project.
+   Enter a short, useful comment and send it.
+   Show the saved feedback. Sign in as the student to show receipt
+   in the portfolio action panel if you want to demonstrate both sides.
+   Say: "An advisor can give feedback on an assigned student's work."
+
+   WHY THESE SHORTCUTS
+   We kept one clear form for each action. The shortcuts connect the
+   record you are viewing to that form, so you do not search twice.
+   Presenter wording: "This selects the exact account or project I am
+   looking at. I review the form and press Save or Send to confirm."
+
+ABOUT THE ORIGINAL DEMO VIDEO
+Some original seed posts use media.careerup.io placeholder links.
+No actual video file was supplied for those examples. CareerUp labels
+them Demo video not included; this does not mean uploaded videos fail.
+Use your own small MP4 or WebM for the video part of the demonstration.
+The database still retains the original sample posts and links.
+
+SHOW A MISTAKE BEING HANDLED
+Try signing in with a wrong password.
+Also try submitting an empty form. Show the helpful message, then
+correct the entry. Do not use a real password in the recording.
+
+SHOW THAT MYSQL REALLY CHANGED
+1. Keep CareerUp running.
+2. Open this computer's .local/IntelliJ MySQL Connection.txt inside
+   the Sprint 5 deliverables folder.
+3. In IntelliJ's Database panel, add a MySQL connection using those
+   details. Test the connection and select careerup_sprint5.
+4. Open the relevant table and refresh it before and after saving:
+   Account status: users
+   Portfolio post: posts and post_media
+   Opportunity: jobs
+   Collaboration decision: posts
+   Advisor feedback: advisor_notes
+
+Point to the exact row you changed. Avoid showing password fields
+or the private connection file in the recording.
+Say: "This row matches the change we just made in CareerUp."
+
+WHAT STAYS SAVED
+Signing out does not delete saved posts, feedback or uploads.
+Each computer has its own local database and uploaded media.
+GitHub shares the code; it does not share those local records/files.
+Each teammate uses their OWN generated MySQL connection details.
+Do not delete .local or rerun old seed files to refresh the app.
+
+AFTER A CODE CHANGE OR A PULL
+Save your work in IntelliJ. Use the team's agreed Git branch.
+From IntelliJ's Terminal, inside the repository:
+
+Get the team's latest committed code:
+git pull --ff-only
+
+If Git reports local changes or a conflict, stop and ask your team.
+Do not force it or discard somebody's work.
+
+Then run the rebuild tool in the Sprint 5 Team Tools folder:
+Windows: Rebuild CareerUp.cmd
+Mac: Rebuild CareerUp.command
+Wait for it to finish, then refresh the browser.
+Sprint 5 must be published to the agreed GitHub branch before
+teammates can pull it. It has not been pushed by this assistant.
+
+IF SOMETHING DOES NOT WORK
+Old wording on screen: rebuild this Sprint 5 copy, then refresh.
+Cannot connect: check that CareerUp finished starting.
+Blank Database panel: add the local MySQL connection as above.
+Upload rejected: use a supported format within the size limit.
+No pending request: another demo may already have reviewed it.
+
+BEFORE RECORDING
+Check all five accounts and prepare a small picture/video.
+Check a pending company request is available.
+Show the current GitHub code and genuine teammate participation.
+Each teammate must actually pull and run it on their own machine;
+do not claim this happened until everyone has tested it.
+Use the professor's assignment for the recording/submission rules.
