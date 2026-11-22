@@ -3,7 +3,6 @@
 Sprint 5 continues the working Sprint 4 React / Spring Boot / MySQL application.
 The Sprint 0–4 folders are unchanged. All Sprint 5 work is in this folder.
 
-<br></br>
 
 ## Demo Video/Runthrough
 
