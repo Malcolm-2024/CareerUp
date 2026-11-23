@@ -8,9 +8,9 @@ backend/target/
 backend/src/main/resources/static/
 __pycache__/
 release/
-/CareerUp.exe
-/runtime/
-/app/
+# Keep the complete Windows launcher image in Git, as in Sprint 4.
+# CareerUp.exe requires app/ and runtime/ beside it.
+/app/.jpackage.xml
 
 launcher/build/
 team-change.bundle

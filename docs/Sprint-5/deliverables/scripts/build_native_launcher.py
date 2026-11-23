@@ -8,6 +8,8 @@ classes.mkdir(parents=True,exist_ok=True);inputs.mkdir(parents=True,exist_ok=Tru
 subprocess.run([str(jdk/'bin/javac.exe'),'--release','21','-d',str(classes),str(root/'launcher/src/CareerUpLauncher.java')],check=True)
 subprocess.run([str(jdk/'bin/jar.exe'),'--create','--file',str(inputs/'careerup-launcher.jar'),'--main-class','CareerUpLauncher','-C',str(classes),'.'],check=True)
 shutil.copy2(inputs/'careerup-launcher.jar',root/'launcher/careerup-launcher.jar')
+# The EXE loads app/careerup-launcher.jar; keep it identical to the command launcher.
+if (root/'app').is_dir():shutil.copy2(inputs/'careerup-launcher.jar',root/'app/careerup-launcher.jar')
 if not runtime.exists():
     subprocess.run([str(jdk/'bin/jlink.exe'),'--add-modules','java.se,jdk.compiler,jdk.zipfs,jdk.unsupported,jdk.crypto.ec','--strip-debug','--no-header-files','--no-man-pages','--compress=zip-6','--output',str(runtime)],check=True)
     shutil.copy2(jdk/'lib/ct.sym',runtime/'lib/ct.sym')

@@ -10,8 +10,11 @@ https://youtu.be/EcDb0dnCPFw?is=kWvv10QU3BJe-DUa
 
 ## Run
 
-Windows: double-click **Start-CareerUp.bat**. In a Git checkout, it can reuse
-Java already included under docs/Sprint-4/deliverables/runtime.
+Windows: double-click **CareerUp.exe**, as in Sprint 4. Keep its **app** and
+**runtime** folders beside it. The same complete launcher is included in Git
+and the downloadable ZIP. **Start-CareerUp.bat** remains an alternate entry point.
+Both launchers use the pinned private MySQL 8.4 server; your installed MySQL
+and existing Sprint 3/4 databases are not changed.
 Mac: open **Start CareerUp.command**, or run `bash "Start CareerUp.command"`
 from this folder. The existing automatic Mac setup requires macOS 15+.
 
